@@ -46,12 +46,12 @@ pg_dump_database() {
 }
 
 upload_to_bucket() {
-    backup_path="$(date -u +%Y/%m/%d/backup-%H-%M-%S.sql.gz)"
+    backup_name="pralana-postgres-$(date -u +%Y-%m-%dT%H-%M-%SZ).sql.gz"
 
     log "Uploading compressed backup to:"
-    log "s3://$S3_BUCKET_NAME/$backup_path"
+    log "s3://$S3_BUCKET_NAME/$backup_name"
 
-    if s3 cp - "s3://$S3_BUCKET_NAME/$backup_path"
+    if s3 cp - "s3://$S3_BUCKET_NAME/$backup_name"
     then
         log "S3 upload completed successfully."
     else
