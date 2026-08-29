@@ -13,7 +13,7 @@ s3api() {
 }
 
 bucket_exists() {
-    s3 ls "$S3_BUCKET_NAME" &> /dev/null
+    s3 ls "s3://$S3_BUCKET_NAME" &> /dev/null
 }
 
 create_bucket() {
